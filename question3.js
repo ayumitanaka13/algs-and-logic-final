@@ -8,8 +8,22 @@ for this question, make a comment for every piece of the code, explaining
 what it does and why.
 */
 
-const kebabCase = function (str) {
-    // your code here
+
+
+const kebabCase = function(str) {
+    // return 'This is an empty string!' when str parameter doesn't have any char
+    if (!str) {
+        return 'This is an empty string!';
+    } else {
+        // convert all char to lowercase and split the string at all space characters
+        return str.toLowerCase().split(' ')
+        // creates a new array and get rid of any extra spaces using trim
+        .map(a => a.trim())
+        // convert the first char to upper case for each word and returns index 1 to the end of the char
+        .map(a => a[0].toUpperCase() + a.substring(1))
+        // Join all the strings back together with -
+        .join("-")
+    }
 }
 
 console.log((kebabCase('Coding Is Fun') === 'Coding-Is-Fun') ? "Test 1: Passing" : "Test 1: Failing");
